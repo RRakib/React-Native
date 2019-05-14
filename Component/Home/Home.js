@@ -7,17 +7,9 @@ class Home extends Component{
         this.state = {
             blink : false
         }
-        setInterval(() => (
-            this.setState((prevState) => ({
-                blink : !prevState.blink
-            }))
-        ), 500);
     }
 
     render(){
-        if(!this.state.blink){
-            return null
-        }
         return(
                 <Text style={styles.welcome}>{this.props.msg}</Text>
         )
