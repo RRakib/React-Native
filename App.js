@@ -1,6 +1,7 @@
 // Imports 
 import React, {Component} from 'react';
 import Home from "./Component/Home/Home"
+import TextInputC from "./Component/TextInput/TextInputC"
 import {Platform, StyleSheet, View, Text} from 'react-native';
 
 const instructions = Platform.select({
@@ -14,7 +15,8 @@ export default class App extends Component {
   render() {
     return (
         <View style={styles.container}>
-          <Home msg="Hello World!"/>
+          {/* <Home msg="Hello World!"/> */}
+          <TextInputC />
           <View style={styles.rBox}>
             <View style={styles.b1}>
               <Text style={styles.text}>Box 1</Text>
@@ -44,21 +46,21 @@ const styles = StyleSheet.create({
   },
   b1 : {
     flex : 1,
-    height: 100,
+    height: 150,
     alignItems : "center",
     justifyContent: "center",
     backgroundColor: "powderblue",
   },
   b2 : {
     flex : 1,
-    height: 100,
+    height: 150,
     alignItems : "center",
     justifyContent: "center",
     backgroundColor: "skyblue",
   },
   b3 : {
     flex : 1,
-    height: 100,
+    height: 150,
     alignItems : "center",
     justifyContent: "center",
     backgroundColor: "steelblue",
