@@ -1,53 +1,117 @@
 import React , {Component} from "react"
-import {TextInput, StyleSheet, View, Text} from "react-native"
+import {Alert, TextInput, StyleSheet, View, Text , TouchableHighlight, ScrollView} from "react-native"
 
 
 const styles = StyleSheet.create({
     size : {
-        width: 350,
+        width: 412,
         fontSize: 25,
+        paddingLeft: 15,
+        marginBottom: 10,
+        borderLeftWidth: 4,
+        borderColor: "steelblue",
     },
     show : {
-        padding:5,
-        width: 350,
+        width: 412,
+        height: 50,
+        marginTop:5,
+        marginBottom:5,
+        borderRadius: 5,
+        paddingLeft: 10,
+        borderLeftWidth: 6,
+        alignItems:'center',
+        flexDirection: 'row',
+        borderColor: "steelblue",
+        backgroundColor: "lightgreen",
+    },
+    text : {
         fontSize: 25,
         color: "#fff",
-        backgroundColor: "#555",
+    },
+    button : {
+        width: 410,
+        height: 50,
+        borderRadius: 5,
+        alignItems:'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        backgroundColor: "steelblue",
     }
 })
 
 
-
+// Class Based Component
 class TextInputC extends Component{
     constructor(){
         super();
         this.state = {
-            text : "",
-            bol : false
+            firstName : "",
+            lastName : "",
+            output : [],
         }
     }
-    handleChange = (value) => {
-        if(value === ""){
-            this.setState({
-                bol : false
-            })
-        }
+
+    // Input Filed Handler
+    handleChange = (name , value) => {
         this.setState({
-            text : value,
-            bol : true
+            [name] : value,
         })
     }
-    render(){
-        return(
-            <View>
-                <TextInput
-                    style={styles.size}
-                    placeholder="Insert Some Text"
-                    onChangeText={(value) => this.handleChange(value)}
-                />
 
-                {this.state.bol?  <Text style={styles.show}>{this.state.text}</Text> : null}
-            </View>
+    // Submit Button Handler
+    handlePress = () => {
+        const fullName = this.state.firstName + " " + this.state.lastName
+        this.state.firstName && this.state.lastName &&
+        this.setState({
+            output : [...this.state.output , fullName],
+            lastName : "",       
+            firstName : ""
+        })
+        this.state.firstName && this.state.lastName && Alert.alert("FirstName: " + this.state.firstName + "\n" + "LastName: " + this.state.lastName)
+    }
+
+
+    // Rendering Component
+    render(){
+        const output = this.state.output.map(item => {
+            return(
+                <View style={styles.show}>
+                    <Text style={styles.text} style={{color: "#333", fontSize : 25}}>
+                        {item}
+                    </Text>
+                </View>
+            )
+        })
+
+        // Returning The DOM
+        return(
+            <ScrollView>
+                <View>
+                    <TextInput
+                        style={styles.size}
+                        value={this.state.firstName}
+                        placeholder="Enter your first name"
+                        onChangeText={(value) => this.handleChange("firstName" , value)}
+                    />
+                    <TextInput
+                        style={styles.size}
+                        value={this.state.lastName}
+                        placeholder="Enter your last name"
+                        onChangeText={(value) => this.handleChange("lastName" , value)}
+                    />
+                    <TouchableHighlight
+                        style={styles.button}
+                        underlayColor = "#508dbf"
+                        onPress={this.handlePress}
+                    >
+                        <Text style={styles.text}>Submit</Text>
+                    </TouchableHighlight>  
+                    
+                    {/* // Display Output */}
+                    {output}
+
+                </View>
+            </ScrollView>
         )
     }
 }

@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import Home from "./Component/Home/Home"
 import TextInputC from "./Component/TextInput/TextInputC"
-import {Platform, StyleSheet, View, Text} from 'react-native';
+import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -14,32 +14,36 @@ const instructions = Platform.select({
 export default class App extends Component {
   render() {
     return (
+      <ScrollView>
         <View style={styles.container}>
-          {/* <Home msg="Hello World!"/> */}
-          <TextInputC />
-          <View style={styles.rBox}>
-            <View style={styles.b1}>
-              <Text style={styles.text}>Box 1</Text>
-            </View>
-            <View style={styles.b2}>
-              <Text style={styles.text}>Box 2</Text>
-            </View>
-            <View style={styles.b3}>
-              <Text style={styles.text}>Box 3</Text>
-            </View>
+          <View style={styles.container1}>
+            {/* <Home msg="Hello World!"/> */}
+            <Text style={styles.text}>Welcome To Native</Text>
+            <TextInputC />
+          </View>
+          <View style={styles.container1}>
+            <Text style={styles.text}>Flex Row View</Text>
+            <Home msg="Hello World!"/>
           </View>
         </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
     flex: 1,
+    display: "flex",
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: "lightgreen"
+    backgroundColor: "powderblue"
+  },
+  container1: {
+    flex: 1,
+    height:765,
+    display: "flex",
+    alignItems: 'center',
+    backgroundColor: "powderblue"
   },
   rBox : {
     flexDirection : "row"
@@ -66,7 +70,11 @@ const styles = StyleSheet.create({
     backgroundColor: "steelblue",
   },
   text : {
-    fontSize: 25,
+    fontSize: 35,
+    color: "#444",
+    marginTop: 45,
+    marginBottom: 35,
+    fontWeight: 'bold',
   }
 
 });
