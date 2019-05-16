@@ -22,7 +22,7 @@ export default class App extends Component {
             <TextInputC />
           </View>
           <View style={styles.container1}>
-            <Text style={styles.text}>Flex Row View</Text>
+            <Text style={styles.text}>Gallery</Text>
             <Home msg="Hello World!"/>
           </View>
         </View>
