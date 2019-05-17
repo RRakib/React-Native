@@ -1,7 +1,8 @@
 // Imports 
 import React, {Component} from 'react';
-import Home from "./Component/Home/Home"
-import TextInputC from "./Component/TextInput/TextInputC"
+// import Home from "./Component/Home/Home"
+import FaceBookHome from "./Component/facebookClone/Home"
+// import TextInputC from "./Component/TextInput/TextInputC"
 import {Platform, StyleSheet, View, Text, ScrollView} from 'react-native';
 
 const instructions = Platform.select({
@@ -15,9 +16,8 @@ export default class App extends Component {
   render() {
     return (
       <ScrollView>
-        <View style={styles.container}>
+        {/* <View style={styles.container}>
           <View style={styles.container1}>
-            {/* <Home msg="Hello World!"/> */}
             <Text style={styles.text}>Welcome To Native</Text>
             <TextInputC />
           </View>
@@ -25,7 +25,8 @@ export default class App extends Component {
             <Text style={styles.text}>Gallery</Text>
             <Home msg="Hello World!"/>
           </View>
-        </View>
+        </View> */}
+        <FaceBookHome />
       </ScrollView>
     );
   }
